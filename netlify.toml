@@ -2,3 +2,18 @@
   from = "/api/movies/*"
   to = "/.netlify/functions/movie-by-slug"
   status = 200
+
+[[redirects]]
+  from = "/api/speakers"
+  to = "/.netlify/functions/allSpeakers"
+  status = 200
+
+[[redirects]]
+  from = "/api/speakers/*"
+  to = "/.netlify/functions/speaker-by-id"
+  status = 200
+
+[[redirects]]
+  from = "/speakers/*"
+  to = "/speakers"
+  status = 200

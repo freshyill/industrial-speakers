@@ -17,44 +17,26 @@
     </style>
   </head>
   <body>
-    <h1>API Example Using Serverless</h1>
-    <p>
-      This is a simplified REST API deployed using serverless functions and
-      <a href="https://ntl.fyi">Netlify</a>.
-    </p>
-    <p>Try it out by visiting these API endpoints:</p>
-    <ul>
-      <li>
-        <a href="/api/movies/batman-v-booperman"
-          >/api/movies/batman-v-booperman</a
-        >
-      </li>
-      <li>
-        <a href="/api/movies/starship-boopers">/api/movies/starship-boopers</a>
-      </li>
-      <li>
-        <a href="/api/movies/booper">/api/movies/booper</a>
-      </li>
-      <li>
-        <a href="/api/movies/in-the-boop">/api/movies/in-the-boop</a>
-      </li>
-    </ul>
-    <p>
-      You can
-      <a href="https://github.com/jlengstorf/api-using-serverless"
-        >see the source code</a
-      >
-      or deploy your own copy of this API to Netlify:
-    </p>
-    <p style="text-align: center">
-      <a
-        href="https://app.netlify.com/start/deploy?repository=https://github.com/jlengstorf/api-using-serverless&utm_campaign=devex-jl&utm_source=github&utm_medium=dtn-button&utm_content=serverless-api"
-      >
-        <img
-          src="https://www.netlify.com/img/deploy/button.svg"
-          alt="Deploy to Netlify"
-        />
-      </a>
-    </p>
+
+    <ol id="list"></ul>
+
+    <script>
+      async function fetchSpeakersJSON() {
+        const response = await fetch('/api/speakers');
+        const speakers = await response.json();
+        return speakers;
+      }
+      fetchSpeakersJSON().then(speakers => {
+        speakers; 
+
+        speakers.forEach((speaker, index, array) => {
+          
+          document.getElementById("list").innerHTML += `<li><a href="/speaker/?id=${speaker.id}">${speaker.firstName} ${speaker.lastName}</a></li>`
+
+          // console.log(item, index);
+        });
+      });
+    </script>
+
   </body>
 </html>
